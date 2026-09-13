@@ -11,6 +11,9 @@ from app.models.water_quality_report import WaterQualityReport
 from app.models.weather import Weather
 from app.models.prediction import Prediction
 from app.models.alert import Alert
+from app.models.health_record import HealthRecord
+from app.models.user import User
+from app.models.health_record_symptom import HealthRecordSymptom
 
 load_dotenv()
 
