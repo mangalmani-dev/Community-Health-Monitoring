@@ -54,7 +54,4 @@ class Patient(Base):
         nullable=False
     )
 
-    symptoms = relationship(
-        "Symptom",
-        secondary="health_record_symptoms"
-    )
+ 

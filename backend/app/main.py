@@ -1,9 +1,15 @@
 from fastapi import FastAPI
 
+from app.routes.village import router as village_router
+
+
 app = FastAPI(
     title="Smart Community Health Monitoring API",
     version="1.0.0"
 )
+
+
+app.include_router(village_router)
 
 
 @app.get("/")

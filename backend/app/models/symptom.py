@@ -19,7 +19,4 @@ class Symptom(Base):
         unique=True
     )
 
-    patients = relationship(
-        "Patient",
-        secondary="health_record_symptoms"
-    )
+ 
