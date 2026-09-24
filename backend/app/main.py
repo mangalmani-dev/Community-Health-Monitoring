@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 from app.routes.patient import router as patient_router
-
+from app.routes.symptom import router as symptom_router
 from app.routes.village import router as village_router
+from app.routes.health_record import router as health_record_router
+from app.routes.user import router as user_router
+from app.routes.health_record_symptom import router as health_record_symptom_router
 
 
 app = FastAPI(
@@ -12,6 +15,10 @@ app = FastAPI(
 
 app.include_router(village_router)
 app.include_router(patient_router)
+app.include_router(symptom_router)
+app.include_router(health_record_router)
+app.include_router(user_router)
+app.include_router(health_record_symptom_router)
 
 
 @app.get("/")
