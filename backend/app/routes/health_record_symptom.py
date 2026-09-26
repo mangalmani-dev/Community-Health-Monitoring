@@ -36,3 +36,5 @@ def create_health_record_symptom(
     db.refresh(new_record)
 
     return new_record
+
+

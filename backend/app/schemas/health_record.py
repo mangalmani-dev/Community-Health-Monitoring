@@ -15,3 +15,9 @@ class HealthRecordCreate(BaseModel):
 class HealthRecordResponse(HealthRecordCreate):
     id: int
     created_at: datetime
+
+
+class HealthRecordUpdate(BaseModel):
+    diagnosis: str | None = None
+    severity: str | None = None
+    notes: str | None = None
