@@ -5,7 +5,6 @@ from pydantic import BaseModel
 
 class HealthRecordCreate(BaseModel):
     patient_id: int
-    recorded_by: int
     record_date: datetime
     diagnosis: str | None = None
     severity: str | None = None
@@ -14,6 +13,7 @@ class HealthRecordCreate(BaseModel):
 
 class HealthRecordResponse(HealthRecordCreate):
     id: int
+    recorded_by: int
     created_at: datetime
 
 
