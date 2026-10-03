@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-
+from app.core.security import hash_password
 from app.db.database import SessionLocal
 from app.models.user import User
 
@@ -31,7 +31,7 @@ def create_user(
         name=user.name,
         email=user.email,
         phone=user.phone,
-        password_hash=user.password,
+        password_hash=hash_password(user.password),
         role=user.role,
         village_id=user.village_id
     )
