@@ -1,4 +1,12 @@
+from enum import Enum
+
 from pydantic import BaseModel
+
+
+class UserRole(str, Enum):
+    ASHA_WORKER = "ASHA Worker"
+    MEDICAL_OFFICER = "Medical Officer"
+    DISTRICT_HEALTH_OFFICER = "District Health Officer"
 
 
 class UserCreate(BaseModel):
@@ -6,7 +14,7 @@ class UserCreate(BaseModel):
     email: str
     phone: str | None = None
     password: str
-    role: str
+    role: UserRole                  
     village_id: int | None = None
 
 

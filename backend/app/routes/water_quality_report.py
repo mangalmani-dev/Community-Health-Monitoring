@@ -33,6 +33,7 @@ def create_water_quality_report(
         water_source_id=report.water_source_id,
         ph=report.ph,
         turbidity=report.turbidity,
+        h2s_test_result=report.h2s_test_result,
         contamination_status=report.contamination_status,
         tested_by=report.tested_by,
         tested_at=report.tested_at

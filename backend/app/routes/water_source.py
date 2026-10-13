@@ -71,6 +71,18 @@ def get_water_source(
 
     return water_source
 
+@router.get("/village/{village_id}", response_model=list[WaterSourceResponse])
+def get_water_sources_by_village(
+    village_id: int,
+    db: Session = Depends(get_db)
+):
+    water_sources = db.query(WaterSource).filter(
+        WaterSource.village_id == village_id
+    ).all()
+
+    return water_sources
+
+
 @router.put("/{water_source_id}", response_model=WaterSourceResponse)
 def update_water_source(
     water_source_id: int,

@@ -10,7 +10,7 @@ from app.schemas.health_record import (
     HealthRecordResponse,
     HealthRecordUpdate
 )
-
+from app.schemas.user import UserRole 
 
 router = APIRouter(
     prefix="/health-records",
@@ -56,8 +56,8 @@ def get_health_records(
     db: Session = Depends(get_db),
     current_user=Depends(
         require_role(
-            "Medical Officer",
-            "District Health Officer"
+            UserRole.MEDICAL_OFFICER,
+            UserRole.DISTRICT_HEALTH_OFFICER
         )
     )
 ):

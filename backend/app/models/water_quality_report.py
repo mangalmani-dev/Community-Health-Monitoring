@@ -31,7 +31,7 @@ class WaterQualityReport(Base):
         nullable=True
     )
     h2s_test_result: Mapped[str | None] = mapped_column(
-            String(20),
+            String(25),
             nullable=True
     )
     contamination_status: Mapped[str] = mapped_column(
