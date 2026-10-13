@@ -1,4 +1,8 @@
-fastapi
-psycopg
-sqlalchemy
-pyjwt
+fastapi==0.110.0
+uvicorn==0.28.0
+sqlalchemy==2.0.29
+psycopg[binary]==3.1.18
+PyJWT==2.8.0
+bcrypt==4.1.2
+python-dotenv==1.0.1
+pydantic==2.7.1
