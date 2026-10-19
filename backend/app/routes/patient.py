@@ -6,6 +6,12 @@ from app.models.patient import Patient
 from app.schemas.patient import PatientCreate, PatientResponse
 
 
+from app.models.health_record import HealthRecord
+from app.core.dependencies import get_current_user
+from datetime import datetime
+
+
+
 router = APIRouter(
     prefix="/patients",
     tags=["Patients"]
@@ -24,8 +30,10 @@ def get_db():
 @router.post("/", response_model=PatientResponse)
 def create_patient(
     patient: PatientCreate,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
 ):
+    # 1. Create Patient record
     new_patient = Patient(
         village_id=patient.village_id,
         name=patient.name,
@@ -38,7 +46,21 @@ def create_patient(
     db.commit()
     db.refresh(new_patient)
 
+    # 2. Automatically create Health Record if diagnosis is provided
+    if patient.diagnosis:
+        new_health_record = HealthRecord(
+            patient_id=new_patient.id,
+            recorded_by=current_user.id,
+            record_date=datetime.utcnow(),
+            diagnosis=patient.diagnosis,
+            severity=patient.severity,
+            notes=patient.notes
+        )
+        db.add(new_health_record)
+        db.commit()
+
     return new_patient
+
 
 
 
@@ -49,7 +71,7 @@ def get_patients(
     patients = db.query(Patient).all()
 
     return patients
-
+db
 
 @router.get("/{patient_id}", response_model=PatientResponse)
 def get_patient(

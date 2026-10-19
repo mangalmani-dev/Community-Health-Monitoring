@@ -7,6 +7,9 @@ class PatientCreate(BaseModel):
     age: int
     gender: str
     contact_number: str | None = None
+    diagnosis: str | None = None
+    severity: str | None = None
+    notes: str | None = None
 
 
 class PatientResponse(PatientCreate):
