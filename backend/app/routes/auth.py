@@ -62,5 +62,8 @@ def login(
 
     return {
         "access_token": access_token,
-        "token_type": "bearer"
+        "token_type": "bearer",
+        "village_id": user.village_id,
+        "name": user.name
+        
     }
