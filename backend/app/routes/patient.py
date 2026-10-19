@@ -71,7 +71,7 @@ def get_patients(
     patients = db.query(Patient).all()
 
     return patients
-db
+
 
 @router.get("/{patient_id}", response_model=PatientResponse)
 def get_patient(
